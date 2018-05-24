@@ -52,13 +52,37 @@ const  getAllData = () => {
 
       client.close();
     });
-  })
-}
+  });
+};
 
+const deleteAll = () => {
+  return new Promise ((resolve, reject) => {
+    // connect to mango server
+    MongoClient.connect('mongodb://localhost:27017', {useNewUrlParser: true}, (err, client) => {
+      if (err) {
+        reject('Unable connect to MongoDB');
+      }
 
+      console.log('Connected to MongoDB');
+      //function to create database
+      const db = client.db('WeatherApp');
+
+      // insert on function
+
+    db.collection('weatherCollection').remove({}).then( (result) => {
+      resolve(result);
+    }, (err) => {
+      reject ('Unable to delete');
+    });
+
+      client.close();
+    });
+  });
+};
 
 //export function
 module.exports = {
   saveData,
   getAllData,
+  deleteAll,
 }
