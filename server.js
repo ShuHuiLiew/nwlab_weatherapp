@@ -5,6 +5,8 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const filemgr = require('./filemgr');
 
+const port = process.env.PORT || 3000;
+
 server.use(bodyParser.urlencoded({extended: true}));
 
 server.set('view engine', 'hbs');
@@ -102,6 +104,6 @@ server.get('/form',(req, res) => {
 });
 
 
-server.listen(3000, () => {
-  console.log("Server started on port 3000");
+server.listen(post, () => {
+  console.log(`Server started on port ${port}`);
 });//specified port 3000
