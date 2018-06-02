@@ -104,6 +104,6 @@ server.get('/form',(req, res) => {
 });
 
 
-server.listen(post, () => {
+server.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });//specified port 3000
